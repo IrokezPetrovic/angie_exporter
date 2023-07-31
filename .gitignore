@@ -1,2 +1,4 @@
 /.vscode/
 angie_exporter
+/build
+/dist
