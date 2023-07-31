@@ -37,6 +37,11 @@ func WriteMetrics(writer io.Writer, status *angiescraper.AngieStatus) {
 			fmt.Fprintf(writer, "angie_upstream_peer_health_downtime{upstream=\"%s\",peer=\"%s\",peer_server=\"%s\"} %d\n",
 				upstreamName, peerName, peer.Server, peer.Health.Downtime)
 
+			fmt.Fprintf(writer, "angie_upstream_selected_current{upstream=\"%s\",peer=\"%s\",peer_server=\"%s\"} %d\n",
+				upstreamName, peerName, peer.Server, peer.Selected.Current)
+			fmt.Fprintf(writer, "angie_upstream_selected_total{upstream=\"%s\",peer=\"%s\",peer_server=\"%s\"} %d\n",
+				upstreamName, peerName, peer.Server, peer.Selected.Total)
+
 			for statusCode, count := range peer.Responses {
 				fmt.Fprintf(writer, "angie_upstream_peer_responses{upstream=\"%s\",peer=\"%s\",peer_server=\"%s\",status=\"%s\"} %d\n",
 					upstreamName, peerName, peer.Server, statusCode, count)

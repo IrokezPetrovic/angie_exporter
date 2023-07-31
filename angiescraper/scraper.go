@@ -41,6 +41,7 @@ func (s *scraper) Scrape() (AngieStatus, error) {
 	if err != nil {
 		return scrapeResult, fmt.Errorf("Angie return %d for GET %s", resp.StatusCode, s.scrapeUrl)
 	}
+	scrapeResult.Up = true
 
 	return scrapeResult, nil
 }
